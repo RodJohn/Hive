@@ -8,9 +8,9 @@ insert
 load    
     
     load  cp or mv
+           本地 文件 或者 hdfs
     
-    
-    
+   
 From insert select 
  
     一次查询 多次插入  
