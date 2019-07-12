@@ -22,6 +22,14 @@ Hive中列支持使用struct map array集合数据类型.
 
 建表
 
+     CREATE TABLE person(
+        id INT,
+        name STRING,
+        age INT,
+        likes ARRAY<STRING>,
+        address MAP<STRING,STRING>
+      )
+      
 
 查看
 
@@ -36,7 +44,18 @@ Hive中列支持使用struct map array集合数据类型.
 
       table type 
       
-# 表类型
+Hive 建表
+
+Create Table Like:
+CREATE TABLE empty_key_value_store LIKE key_value_store;
+
+Create Table As Select (CTAS)
+CREATE TABLE new_key_value_store 
+      AS
+    SELECT columA, columB FROM key_value_store;
+
+
+
 
 # 表类型
 
@@ -62,6 +81,15 @@ desc formatted
        内部表 先建表 后加载数据
        外部表 HDFS先有数据 在建表
        
+Hive 内部表
+CREATE  TABLE [IF NOT EXISTS] table_name
+删除表时，元数据与数据都会被删除
+Hive 外部表
+CREATE EXTERNAL TABLE [IF NOT EXISTS] table_name LOCATION hdfs_path
+删除外部表只删除metastore的元数据，不删除hdfs中的表数据
+
+
+
 
     
               
