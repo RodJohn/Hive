@@ -1,5 +1,1 @@
-# Hive
-
-。Pig是接近脚本方式去描述MapReduce，Hive则用的是SQL。它们把脚本和SQL语言翻译成MapReduce程序，
-
-
+# [知识图谱](https://www.processon.com/mindmap/5d1c5dbce4b0316252cd8b24)
