@@ -47,8 +47,6 @@ load data inpath ‘/home/wyp/add.txt’ into table wyp;里面是没有local这�
     
    
    
-   
-   
 
 insert 
 
