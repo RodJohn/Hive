@@ -1,75 +1,49 @@
 
-# insert 
 
-四种
+# 插入
 
-
-# 文件
-
-字段 
-分隔符
-    默认分隔符 
-        显示 ^A 实际 ctrl c  也相当与 ^A \u0001 ^B \u0002
-    自己定义 
-        filed , 
-        -
-        :
-文件格式
-    TEXT
-    JSON
+    插入有3种 load 、from insert select、insert
     
-行存储 列存储 
-    存储空间  
- 
+## load
 
+    导入数据到Hive
 
-# 1、从本地文件系统中导入数据到Hive表
+从HDFS导入
+
+    load data inpath ‘/home/wyp/add.txt’ into table wyp;
+    
+    从HDFS导入数据到表中，相当于移动数据到对应的Hive表的数据目录里面
+    
+从本地文件系统导入
 
     load data local inpath 'wyp.txt' into table wyp
 
-存儲
-
-    到wyp表的数据目录下查看
-    
-    hive> dfs -ls /user/hive/warehouse/wyp ;
-    Found 1 items
-    -rw-r--r--3 wyp supergroup 67 2014-02-19 18:23 /hive/warehouse/wyp/wyp.txt
-    
     从本地文件系统中将数据导入到Hive表的过程中，
     其实是先将数据临时复制到HDFS的一个目录下（典型的情况是复制到上传用户的HDFS home目录下,比如/home/wyp/），
     然后再将数据从那个临时目录下移动（注意，这里说的是移动，不是复制！）到对应的Hive表的数据目录里面。
     
     
-# HDFS上导入数据到Hive
-
-load data inpath ‘/home/wyp/add.txt’ into table wyp;里面是没有local这个单词的
-
-    
-   
-   
-
-insert 
-
-    慢
-
-load    
-    
-    load  cp or mv
-           本地 文件 或者 hdfs
-    
-   
-From insert select 
+## From insert select 
  
+    从指定表查询指定数据插入到其他表中
+
+特点
+
     一次查询 多次插入  
     中间结果
-    
     可以override
-    
-    
-writing data into file
+      
 
-    不用
+## insert 
 
+    慢
+    一般不用
+
+    
+# 导出
+
+    导出数据到文件系统
+    
     insert into file select 
     
     默认分隔符  cat -A 才能看到
@@ -96,11 +70,13 @@ writing data into file
 # update 
 
     有事务 用不上
-    
-    只能ORC文件
-    因为HDFS不支持
-    
     根本不用 update 和delete
+    
+限制
+
+    没有begin，没有rollback    
+    只能基于ORC文件
+    
     
     
     
