@@ -20,6 +20,11 @@
         id INT,
         name STRING
       )
+      row format dilimited 
+      fields terminated by '' 
+      collection items terminated by '' 
+      map keys terminated by ''
+      | serde(正则)
 
 ## 外部表
 
@@ -64,24 +69,7 @@ As
     Create person2 As Select id,name from person
     创建表并导入数据
 
-# 正则
 
-    Hive正则匹配
-     CREATE TABLE logtbl (
-        host STRING,
-        identity STRING,
-        t_user STRING,
-        time STRING,
-        request STRING,
-        referer STRING,
-        agent STRING)
-      ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.RegexSerDe'
-      WITH SERDEPROPERTIES (
-        "input.regex" = "([^ ]*) ([^ ]*) ([^ ]*) \\[(.*)\\] \"(.*)\" (-|[0-9]*) (-|[0-9]*)"
-      )
-      STORED AS TEXTFILE;
-      
- 
  
 # 查看表
 

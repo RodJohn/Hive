@@ -39,13 +39,15 @@
 
     慢
     一般不用
+    
+    insert into table values()
 
     
 # 导出
 
     导出数据到文件系统
     
-    insert into file select 
+    insert into local directory dic.. select-statement
     
     默认分隔符  cat -A 才能看到
 

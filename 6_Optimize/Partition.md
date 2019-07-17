@@ -4,14 +4,13 @@
 目的
 
     加快查询
-    一般 SELECT 查询会扫描整个表，使用 PARTITIONED BY 子句建表，查询就可以利用分区剪枝（input pruning）的特性
+    一般 SELECT 查询会扫描整个表，
+    使用 PARTITIONED BY 子句建表，查询就可以利用分区剪枝（inpu）的特性
 
 
 效果
     
-    目录下面设置子目录 
-    
-    分区 相当于 HDFS子目录 
+    展现形式：再hdfs目录上创建多级目录
     
 # 使用
 
@@ -102,10 +101,11 @@
     所有执行mr节点上，允许创建的所有动态分区的最大数量(1000)
     set hive.exec.max.created.files;
     所有的mr job允许创建的文件的最大数量(100000)
-    
 
-        加载数据
-        from psn21
-        insert overwrite table psn22 partition(age, sex)  
-        select id, name, age, sex, likes, address distribute by age, sex;
+示例
+
+    加载数据
+    from psn21
+    insert overwrite table psn22 partition(age, sex)  
+    select id, name, age, sex, likes, address distribute by age, sex;
 
