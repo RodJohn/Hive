@@ -1,4 +1,5 @@
 
+   
 
 # 插入
 
@@ -48,36 +49,9 @@
     
     默认分隔符  cat -A 才能看到
 
-# 正则
-
-    Hive正则匹配
-     CREATE TABLE logtbl (
-        host STRING,
-        identity STRING,
-        t_user STRING,
-        time STRING,
-        request STRING,
-        referer STRING,
-        agent STRING)
-      ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.RegexSerDe'
-      WITH SERDEPROPERTIES (
-        "input.regex" = "([^ ]*) ([^ ]*) ([^ ]*) \\[(.*)\\] \"(.*)\" (-|[0-9]*) (-|[0-9]*)"
-      )
-      STORED AS TEXTFILE;
-      
+   
     
-    
-# update 
-
-    有事务 用不上
-    根本不用 update 和delete
-    
-限制
-
-    没有begin，没有rollback    
-    只能基于ORC文件
-    
-    
+ 
     
     
     

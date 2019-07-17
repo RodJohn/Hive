@@ -12,40 +12,16 @@
 
 # 创建表
 
-## 普通类型
+## 内部表
+
+语法
 
      CREATE TABLE person(
         id INT,
         name STRING
       )
 
-## 复杂类型
-
-概述
-
-    复杂类型需要使用分隔符进行分割
-    
-分隔符
-
-    默认分隔符 
-        列分隔符   显示^A 实际 ctrl c  也相当与  \u0001 
-        集合分隔符 显示^B 实际 ctrl c  也相当与  \u0002 
-        映射分隔符 显示^C 实际 ctrl c  也相当与  \u0003 
-    自定义分隔符 
-
-示例
-     
-    create external table psn7(
-    id int,
-    name string,
-    likes array<string>,
-    address map<string,string>)
-    row format delimited
-    fields terminated by ','
-    collection items terminated by '-'
-    map keys terminated by ':';
-
-# 创建外部表
+## 外部表
 
 概述
 
@@ -54,7 +30,11 @@
 
 语法
 
-    create external table text1 (line string) location '/user/input/'
+    CREATE external TABLE person(
+        id INT,
+        name STRING
+    ) location '/user/input/'
+    
     基于HDFS创建表
     文件是'/user/input/word'，使用它的目录
 
@@ -84,6 +64,25 @@ As
     Create person2 As Select id,name from person
     创建表并导入数据
 
+# 正则
+
+    Hive正则匹配
+     CREATE TABLE logtbl (
+        host STRING,
+        identity STRING,
+        t_user STRING,
+        time STRING,
+        request STRING,
+        referer STRING,
+        agent STRING)
+      ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.RegexSerDe'
+      WITH SERDEPROPERTIES (
+        "input.regex" = "([^ ]*) ([^ ]*) ([^ ]*) \\[(.*)\\] \"(.*)\" (-|[0-9]*) (-|[0-9]*)"
+      )
+      STORED AS TEXTFILE;
+      
+ 
+ 
 # 查看表
 
 hive

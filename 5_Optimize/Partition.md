@@ -1,10 +1,4 @@
 
-# MR分区
-    kvp 
-    随机分布到不同的reduce
-    
-    数据量
-
 # Hive分区
 
 目的
@@ -13,7 +7,6 @@
     一般 SELECT 查询会扫描整个表，使用 PARTITIONED BY 子句建表，查询就可以利用分区剪枝（input pruning）的特性
 
 
-    HDFS一个目录放了5年 要拿其中一天
 效果
     
     目录下面设置子目录 
